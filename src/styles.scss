@@ -1,19 +1,59 @@
-@import './assets/scss/variables.scss';
+@import "./assets/scss/variables.scss";
 
 * {
-    padding: 0;
-    margin: 0;
-    font-family: Cambria;
-    box-sizing: border-box;
-    color: #444;
+  padding: 0;
+  margin: 0;
+  font-family: Cambria;
+  box-sizing: border-box;
+  color: #444;
 }
 
 a {
-    text-decoration: none;
-    color: #444;
+  text-decoration: none;
+  color: #444;
+  transition: 0.4s;
+
+  &:hover {
+    color: $linkHoverColorPrimary;
+  }
+}
+
+// Form Styles
+form {
+  width: 450px;
+  margin: 0 auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+
+  label {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 0.4em;
+  }
+
+  input, textarea {
+padding: .6em;
+color: #777;
+font-size: .8em;
+  }
+}
+
+input[type="submit"] {
+    background-color: #efefef;
+    border: 2px solid transparent;
+    padding: .6em 1em;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
     transition: .4s;
 
     &:hover {
         color: $linkHoverColorPrimary;
+        border-color: $linkHoverColorPrimary;
+        background-color: transparent;
     }
 }
