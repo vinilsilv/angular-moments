@@ -1,0 +1,52 @@
+@import '/src/assets/scss/variables.scss';
+
+nav {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1em;
+  border-bottom: 1px solid #777;
+}
+
+.brand,
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.brand {
+  img {
+    width: 40px;
+    margin-right: 0.6em;
+  }
+
+  h2 {
+    transition: 0.4s;
+  }
+
+  &:hover > h2 {
+    color: $linkHoverColorPrimary;
+  }
+}
+
+.links {
+  li {
+    margin-right: 1em;
+    list-style: none;
+  }
+
+  a{
+    padding: .1em .3em;
+  }
+}
+
+#add {
+  a {
+    color: $linkHoverColorPrimary;
+  }
+
+  &:hover {
+    background-color: #efefef;
+  }
+}
