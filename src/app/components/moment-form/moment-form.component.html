@@ -1,15 +1,35 @@
-<form>
-    <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" placeholder="Insert a title" required />
+<form (ngSubmit)="submit()" [formGroup]="momentForm" #formDir="ngForm">
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      placeholder="Insert a title"
+      formControlName="title"
+      required
+    />
+    <div *ngIf="title.invalid && formDir.submitted" class="validation-error">
+      <p *ngIf="title.errors?.['required']">The title is mandatory.</p>
     </div>
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea placeholder="What happened there?" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea
+      placeholder="What happened there?"
+      formControlName="description"
+      required
+    ></textarea>
+    <div
+      *ngIf="description.invalid && formDir.submitted"
+      class="validation-error"
+    >
+      <p *ngIf="description.errors?.['required']">
+        The description is mandatory.
+      </p>
     </div>
-    <div class="form-group">
-        <label for="image">Insert a picture:</label>
-        <input type="file">
-    </div>
-    <input type="submit" value="{{ btnText }}">
+  </div>
+  <div class="form-group">
+    <label for="image">Insert a picture:</label>
+    <input type="file" />
+  </div>
+  <input type="submit" value="{{ btnText }}" />
 </form>
