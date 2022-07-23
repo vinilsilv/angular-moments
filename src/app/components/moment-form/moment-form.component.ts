@@ -30,7 +30,7 @@ export class MomentFormComponent implements OnInit {
   }
 
   get description() {
-    return this.momentForm.get('title')!;
+    return this.momentForm.get('description')!;
   }
 
   onFileSelected(event: any) {
