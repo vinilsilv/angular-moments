@@ -22,6 +22,19 @@ export class HomeComponent implements OnInit {
   constructor(private momentService: MomentService) {}
 
   ngOnInit(): void {
+    this.getMoments()    
+  }
+
+  search(e: Event):void {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+
+    this.moments = this.allMoments.filter((moment) => {
+      return moment.title.toLowerCase().includes(value)
+    })
+  }
+
+  getMoments() {
     this.momentService.getMoments().subscribe((items) => {
       const data = items.data;
 
@@ -34,14 +47,5 @@ export class HomeComponent implements OnInit {
       this.allMoments = data
       this.moments = data
     });
-  }
-
-  search(e: Event):void {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
-
-    this.moments = this.allMoments.filter((moment) => {
-      return moment.title.toLowerCase().includes(value)
-    })
   }
 }

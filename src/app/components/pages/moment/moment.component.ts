@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { faEdit, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Moment } from 'src/app/Moment';
+import { MessagesService } from 'src/app/services/messages.service';
 import { MomentService } from 'src/app/services/moment.service';
 import { environment } from 'src/environments/environment';
 
@@ -12,13 +13,15 @@ import { environment } from 'src/environments/environment';
 })
 export class MomentComponent implements OnInit {
   moment?: Moment;
-  baseApiUrl:string = environment.baseApiUrl; 
+  baseApiUrl: string = environment.baseApiUrl;
   faTimes = faTimes;
   faEdit = faEdit;
 
   constructor(
     private momentService: MomentService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messagesService: MessagesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,5 +32,11 @@ export class MomentComponent implements OnInit {
       .subscribe((item) => (this.moment = item.data));
   }
 
-  // id on url
+  async removeHandler(id: number) {
+    await this.momentService.removeMoment(id).subscribe();
+
+    this.messagesService.add('Moment deleted succesfully!');
+
+    this.router.navigate(['/']);
+  }
 }
