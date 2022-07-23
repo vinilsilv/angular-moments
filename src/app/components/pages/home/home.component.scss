@@ -1,0 +1,52 @@
+@import '../../../../assets/scss/variables.scss';
+
+.home-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    h1 {
+        margin-bottom: .5em;
+    }
+}
+
+.moments-container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.moment {
+    width: 32%;
+    margin-bottom: 1em;
+    text-align: center;
+
+    img {
+        width: 100%;
+        margin-bottom: 1em;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    h3, p {
+        margin-bottom: 1em;
+    }
+
+    .date {
+        font-size: .7em;
+        font-style: italic;
+    }
+}
+
+a {
+    color: $linkHoverColorPrimary;
+    padding: .3em;
+
+    &:hover {
+        background-color: #efefef;
+    }
+}
